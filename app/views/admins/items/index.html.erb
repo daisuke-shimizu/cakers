@@ -1,0 +1,17 @@
+<%= render 'admins/header' %>
+<p>商品追加</p>
+<%= form_for @item, url: admins_items_path, method: :post do |i| %>
+    <%= i.text_field :name %>
+    <%= i.text_area :introduction %>
+    <%= i.number_field :price %>
+    <%= i.number_field :genre_id %>
+    <%= i.attachment_field :image %>
+    <%= i.submit "start selling!" %>
+<% end %>
+
+<% @items.each do |i| %>
+<%= i.name %>
+<%= i.price %>
+<% end %>
+
+
