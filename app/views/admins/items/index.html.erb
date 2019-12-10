@@ -1,0 +1,28 @@
+<%= render 'admins/header' %>
+<p>商品追加</p>
+<%= form_with model:@item, url: admins_items_path, method: :post do |i| %>
+    <p>name</p>
+    <%= i.text_field :name %>
+    <br>
+    <p>intro</p>
+    <%= i.text_area :introduction %>
+    <br>
+    <p>price</p>
+    <%= i.number_field :price %>
+    <br>
+    <p>genre</p>
+    <%= i.select :genre_id, Genre.all.map {|p| [p.title, p.id]}, :prompt => "選択してください" %>
+    <br>
+    <p>image</p>
+    <%= i.attachment_field :image %>
+    <br>
+    <p></p>
+    <%= i.submit "start selling!" %>
+<% end %>
+
+<% @items.each do |i| %>
+<%= i.name %>
+<%= i.price %>
+<% end %>
+
+

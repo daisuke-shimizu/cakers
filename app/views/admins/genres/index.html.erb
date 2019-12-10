@@ -1,0 +1,10 @@
+<%= render 'admins/header' %>　
+<p>create genres</p>
+<%=form_for @genre, url: admins_genres_path, method: :post do |g|  %>
+    <%= g.text_field :title %>
+    <%= g.submit "create a new genre!" %>
+<% end %>
+
+<% @genres.each do |g| %>
+<%= g.title %>
+<% end %>

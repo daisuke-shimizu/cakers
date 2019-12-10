@@ -76,9 +76,10 @@ ActiveRecord::Schema.define(version: 2019_12_01_120441) do
   create_table "items", force: :cascade do |t|
     t.string "name"
     t.string "image_id"
+    t.integer "genre_id"
     t.string "introduction"
     t.integer "price"
-    t.integer "sales_status"
+    t.integer "sales_status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

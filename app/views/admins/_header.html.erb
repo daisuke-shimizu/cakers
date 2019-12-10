@@ -1,0 +1,12 @@
+<header>
+    <p>Logo</p>
+    <p><%= link_to "Items", admins_items_path %></p>
+    <p>Customers</p>
+    <p>Orders</p>
+    <p><%= link_to "Genres", admins_genres_path %></p>
+    <% if admin_signed_in? %>
+    <p>
+    <%= link_to "log out", destroy_admin_session_path, method: :delete %>
+    <% end %>
+    </p>
+    </header>
