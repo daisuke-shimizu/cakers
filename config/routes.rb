@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'items/index'
+  get 'items/show'
   get 'admins/top'
   devise_for :admins
   devise_for :customers

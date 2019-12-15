@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2019_12_01_120441) do
     t.integer "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
+  end  
 
   create_table "customers", force: :cascade do |t|
     t.string "email", default: "", null: false

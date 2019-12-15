@@ -1,0 +1,6 @@
+<%= render 'customers/header' %>
+
+<%= @cart_items.each do |ci| %>
+<%= ci.item.name %>
+<%= ci.amount %>
+<% end %>

@@ -1,0 +1,11 @@
+<header>
+    <p>Logo</p>
+    <p><%= link_to "Items", items_path %></p>
+    
+    <p><%= link_to "Home", new_customer_registration_path %></p>
+    <% if customer_signed_in? %>
+    <p>
+    <%= link_to "log out", customer_registration_path, method: :delete %>
+    <% end %>
+    </p>
+    </header>
