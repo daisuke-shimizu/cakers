@@ -1,6 +1,6 @@
 <%= render 'admins/header' %>
 <p>商品追加</p>
-<%= form_with model:@item, url: admins_items_path, method: :post do |i| %>
+<%= form_with model:@item, url: admins_item_path, method: :patch do |i| %>
     <p>name</p>
     <%= i.text_field :name %>
     <br>
@@ -16,16 +16,9 @@
     <p>image</p>
     <%= i.attachment_field :image %>
     <br>
+    <p>status</p>
+    <%= i.select :sales_status, Item.sales_statuses.keys.to_a, {}, :prompt => "選択してください" %>
+    <br>
     <p></p>
     <%= i.submit "start selling!" %>
 <% end %>
-
-<% @items.each do |i| %>
-<%= i.name %>
-<%= i.price %>
-<%= attachment_image_tag i, :image, :fill, 60, 60, fallback: "no_img.jpg" %>
-<%= link_to "edit", edit_admins_item_path(i.id) %>
-
-<% end %>
-
-
