@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'admins/top'
   devise_for :admins
   devise_for :customers
-  resources :customers, only: [:show, :edit, :update] do
+  namespace :customers, only: [:show, :edit, :update] do
     resources :cart_items, only: [:index, :create, :destroy]
     resources :addresses, only: [:create, :destroy, :index, :edit, :update]
     resources :orders, only: [:new, :create, :index, :show ]

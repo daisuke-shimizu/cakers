@@ -1,8 +1,10 @@
 <%= render 'customers/header' %>
 <h1>items/index</h1>
 <% @items.each do |i| %>
+<table class="table table-striped">
 <%=link_to i.name , item_path(i.id)%>
 <%= i.price %>
 <%= i.introduction %>
 <%= i.sales_status %>
+</table>
 <% end %>
