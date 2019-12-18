@@ -1,11 +1,12 @@
 <%= render 'customers/header' %>
 
+<h2><%= @item.name %></h2>
 <%= attachment_image_tag @item, :image, :fill, 60, 60, fallback: "no_img.jpg" %>
-<%= @item.name %>
-<%= @item.price %>
+<%= @item.price %>yen
 
-<%= form_with model:@cart_item, url:customer_cart_items_path, method: :post do |ci|  %>
+
+<%= form_with model: @cart_item, url: customers_cart_items_path(current_customer.id), method: :post do |ci|  %>
 <%= ci.select :amount,{"1つ"=>1,"2つ"=>2,"3つ"=>3},{selected: 1},{} %>
 <%= ci.hidden_field :item_id, :value => @item.id  %>
 <%= ci.submit %>
-<% end %>
+<% end %>　

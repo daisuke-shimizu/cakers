@@ -13,3 +13,22 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap-sprockets";
+/*ここを追加*/
+@import "bootstrap";
+/*ここを追加*/
+
+header {
+    height: 50px;
+    background-color: brown;
+    width: 100%;
+}
+
+.container {
+    margin: 0;
+    padding: 0;
+}
+
+.row {
+    margin-left: 30px;
+}

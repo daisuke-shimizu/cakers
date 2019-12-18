@@ -1,11 +1,18 @@
 <header>
-    <p>Logo</p>
-    <p><%= link_to "Items", items_path %></p>
-    
-    <p><%= link_to "Home", new_customer_registration_path %></p>
-    <% if customer_signed_in? %>
-    <p>
-    <%= link_to "log out", customer_registration_path, method: :delete %>
-    <% end %>
-    </p>
-    </header>
+    <div class="row　bg-red">
+        <div class="col-md-6">
+            <p　class="">Logo</p>
+        </div>
+        <div class="col-md-2">
+            <p><%= link_to "Items", items_path %></p>
+        </div>
+        <div class="col-md-2">
+            <p><%= link_to "Home", new_customer_registration_path %></p>
+        </div>
+        <div class="col-md-2">
+            <% if customer_signed_in? %>
+                <%= link_to "log out", customer_registration_path, method: :delete %>
+            <% end %>  
+        </div>
+    </div>
+</header>

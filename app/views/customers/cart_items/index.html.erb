@@ -1,6 +1,43 @@
 <%= render 'customers/header' %>
-
-<%= @cart_items.each do |ci| %>
-<%= ci.item.name %>
-<%= ci.amount %>
+<h2>in your bag</h2>
+<% @cart_items.each do |ci| %>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+            </th>
+            <th>
+                price(include tax)
+            </th>
+            <th>
+                amount
+            </th>
+            <th>
+                subtotal
+            </th>
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>
+                <%= attachment_image_tag ci.item, :image, :fill, 60, 60, fallback: "no_img.jpg" %>
+                <%= ci.item.name %>
+            </th>
+            <th>
+                <%= ci.item.price * 1.1 %>yen
+            </th>
+            <th>
+                <%= ci.amount %>piece(s)
+            </th>
+            <th>
+                <%= ci.item.price * 1.1 * ci.amount %>yen
+            </th>
+            <th>
+                <%= link_to "delete", customers_cart_item_path(ci.id), method: :delete %>
+            </th>
+        </tr>
+    </tbody>
+</table>
 <% end %>
