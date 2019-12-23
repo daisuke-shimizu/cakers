@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2019_12_01_120441) do
     t.integer "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end  
+  end
 
   create_table "customers", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -90,24 +90,21 @@ ActiveRecord::Schema.define(version: 2019_12_01_120441) do
     t.integer "price"
     t.integer "amount"
     t.integer "making_status"
-    t.datetime "made_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "orders", force: :cascade do |t|
     t.integer "customer_id"
-    t.integer "item_id"
     t.string "post_code"
     t.string "prefecture"
     t.string "address"
     t.integer "shipping_cost"
     t.integer "total_payment"
     t.integer "payment_method"
-    t.date "delivery_date"
-    t.time "delivery_time"
     t.integer "order_status"
     t.boolean "is_canceled"
+    t.integer "which_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

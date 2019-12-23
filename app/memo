@@ -1,0 +1,6 @@
+<%= form_with(model: @order,url: customers_orders_path, local: true) do |form| %>
+  <label><%= form.radio_button :payment_method, :card, checked: true %></label>
+  <%= form.label :payment_method, "くれか" , {value: :card} %>
+  <label><%= form.radio_button :payment_method, :hurikomi%></label>
+  <%= form.label :payment_method, "振り込み" , {value: :hurikomi} %>
+<% end %>

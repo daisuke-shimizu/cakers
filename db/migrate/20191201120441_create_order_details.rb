@@ -6,7 +6,6 @@ class CreateOrderDetails < ActiveRecord::Migration[5.2]
       t.integer :price
       t.integer :amount
       t.integer :making_status
-      t.datetime :made_at
       t.timestamps
     end
   end
