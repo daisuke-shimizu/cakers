@@ -10,3 +10,16 @@
 admin1 = Admin.new(:email => 'admin@admin', :password => '123456')
 admin1.save
 
+
+
+genres = Genre.create([{title: "gâteau"}, 
+    {title: "glace"}, {title: "crème caramel"}, 
+    {title: "granité"}, {title: "sorbet"},
+    {title: "gelée"}, {title: "tarte"},
+    {title: "millefeuille"}, {title: "chou à la crème"},
+    {title: "éclair"}, {title: "crêpe"},
+    {title: "biscuit"}, {title: "soufflé"},
+    {title: "macaron"}, {title: "guimauve"},
+    {title: "chocolat"}, {title: "bonbon"},
+    {title: "madeleine"},{title: "beignet"}])
+
