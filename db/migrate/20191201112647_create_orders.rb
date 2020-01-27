@@ -10,6 +10,7 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.integer :payment_method
       t.integer :order_status
       t.boolean :is_canceled
+      t.integer :which_address
       t.timestamps
     end
   end

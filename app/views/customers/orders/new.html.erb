@@ -1,0 +1,30 @@
+<%= render 'customers/header' %>
+<h2>please fill in.</h2>
+
+<%= form_with(url: customers_orders_path, local: true) do |f| %>
+
+    <h3>how to pay</h3>
+        <label>
+            <%=f.radio_button :payment_method, 0, :checked=>'checked'%>creditcard
+        </label>
+        <br>
+        <label>
+            <%=f.radio_button :payment_method, 1%>deposit
+        </label>
+
+    <h3>which address?</h3>
+        <label>
+            <%=f.radio_button :which_address, 0, :checked=>'checked'%>your address
+        </label>
+        <br>
+        <label>
+            <%=f.radio_button :which_address, 1%>other addresses
+        </label>
+        <br>
+        <label>
+            <%=f.radio_button :which_address, 2%>new address
+        </label>
+        <br>
+        <%= f.submit "go to detail your order" %>
+<% end %>
+

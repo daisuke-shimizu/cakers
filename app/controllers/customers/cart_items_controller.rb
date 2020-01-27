@@ -12,6 +12,9 @@ class Customers::CartItemsController < ApplicationController
     end
 
     def destroy
+        cart_item = CartItem.find(params[:id])
+        cart_item.destroy
+        redirect_to customers_cart_items_path
     end
 
     private

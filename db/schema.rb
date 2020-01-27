@@ -94,7 +94,6 @@ ActiveRecord::Schema.define(version: 2019_12_23_051329) do
     t.integer "price"
     t.integer "amount"
     t.integer "making_status"
-    t.datetime "made_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -109,6 +108,7 @@ ActiveRecord::Schema.define(version: 2019_12_23_051329) do
     t.integer "payment_method"
     t.integer "order_status"
     t.boolean "is_canceled"
+    t.integer "which_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
