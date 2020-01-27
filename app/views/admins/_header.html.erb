@@ -1,12 +1,18 @@
-<header>
-    <p>Logo</p>
-    <p><%= link_to "Items", admins_items_path %></p>
-    <p>Customers</p>
-    <p>Orders</p>
-    <p><%= link_to "Genres", admins_genres_path %></p>
-    <% if admin_signed_in? %>
-    <p>
-    <%= link_to "log out", destroy_admin_session_path, method: :delete %>
-    <% end %>
-    </p>
-    </header>
+    <header>
+    <div class="row　bg-red">
+        <div class="col-md-6">
+            <p　class="">Logo</p>
+        </div>
+        <div class="col-md-2">
+            <p><%= link_to "Items", admins_items_path %></p>
+        </div>
+        <div class="col-md-2">
+            <p><%= link_to "Genres", admins_genres_path %></p>
+        </div>
+        <div class="col-md-2">
+            <% if customer_signed_in? %>
+                <%= link_to "log out", destroy_admin_session_path, method: :delete %>
+            <% end %>  
+        </div>
+    </div>
+</header>

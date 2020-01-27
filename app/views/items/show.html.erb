@@ -1,12 +1,24 @@
 <%= render 'customers/header' %>
-
+<h3>アイテムの詳細</h3>
 <h2><%= @item.name %></h2>
 <%= attachment_image_tag @item, :image, :fill, 60, 60, fallback: "no_img.jpg" %>
-<%= @item.price %>yen
+<%= @item.price %>yen 
+<h2>この商品をいいねする</h2>
+<% if @item.favorited_by?(current_customer) %>
+     <p><span>お気に入り解除: </span>
+     <%= button_to @item.favorites.count, {:controller => "items/favorites", :action => "destroy"}, {method: :delete,params: {id: @item.id}} %></p>
+<% else %>
+     <p><span>お気に入り登録: </span>
+     <%= button_to "いいねの数#{@item.favorites.count}", items_favorites_path,{params: {id: @item.id}} %>　</p>
+<% end %>
 
 
+<% if customer_signed_in? %>
 <%= form_with model: @cart_item, url: customers_cart_items_path(current_customer.id), method: :post do |ci|  %>
 <%= ci.select :amount,{"1つ"=>1,"2つ"=>2,"3つ"=>3},{selected: 1},{} %>
 <%= ci.hidden_field :item_id, :value => @item.id  %>
+<%= ci.hidden_field :customer_id, :value => current_customer.id  %>
 <%= ci.submit %>
 <% end %>　
+<% end%>
+

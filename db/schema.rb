@@ -10,14 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_01_120441) do
+ActiveRecord::Schema.define(version: 2019_12_23_051329) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "customer_id"
-    t.string "last_name"
-    t.string "first_name"
-    t.string "last_name_read"
-    t.string "first_name_read"
+    t.string "name"
     t.string "post_code"
     t.string "prefecture"
     t.string "address"
@@ -59,11 +56,18 @@ ActiveRecord::Schema.define(version: 2019_12_01_120441) do
     t.string "main_post_code"
     t.string "main_prefecture"
     t.string "main_address"
-    t.boolean "is_deleted"
+    t.boolean "is_deleted", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "genres", force: :cascade do |t|

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  get 'admins/top'
+
   devise_for :admins
   devise_for :customers
   get 'items/index'
@@ -7,7 +10,11 @@ Rails.application.routes.draw do
     resources :addresses, only: [:create, :destroy, :index, :edit, :update]
     resources :orders, only: [:new, :create, :index, :show ]
   end
-  resources :items, only: [:index, :show]
+  namespace :items,only: [:index, :show] do
+    resource :favorites, only: [:create, :destroy]
+  end
+  root "items#index"
+  resources :items, only: [:show]
   
   namespace :admins do
     resources :items, only: [:create, :edit, :update, :show, :index]
