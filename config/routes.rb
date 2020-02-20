@@ -6,9 +6,17 @@ Rails.application.routes.draw do
   devise_for :customers
   get 'items/index'
   namespace :customers, only: [:show, :edit, :update] do
-    resources :cart_items, only: [:index, :create, :destroy]
+    resources :cart_items, only: [:index, :create, :destroy] do
+      collection do
+        delete :destroy_all
+      end
+    end
     resources :addresses, only: [:create, :destroy, :index, :edit, :update]
-    resources :orders, only: [:new, :create, :index, :show ]
+    resources :orders, only: [:new, :create, :index, :show ]do
+      collection do
+        get :confirm
+      end
+    end
   end
   namespace :items,only: [:index, :show] do
     resource :favorites, only: [:create, :destroy]
