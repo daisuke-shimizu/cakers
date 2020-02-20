@@ -18,6 +18,9 @@
 @import "bootstrap";
 /*ここを追加*/
 
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
 header {
     height: 50px;
     background-color: brown;
@@ -31,4 +34,10 @@ header {
 
 .row {
     margin-left: 30px;
+}
+
+.melon {
+    background-color: #FF0000;
+    height: 200px;
+    width: 200px;
 }

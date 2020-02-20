@@ -3,22 +3,72 @@
 <h2><%= @item.name %></h2>
 <%= attachment_image_tag @item, :image, :fill, 60, 60, fallback: "no_img.jpg" %>
 <%= @item.price %>yen 
-<h2>この商品をいいねする</h2>
-<% if @item.favorited_by?(current_customer) %>
-     <p><span>お気に入り解除: </span>
-     <%= button_to @item.favorites.count, {:controller => "items/favorites", :action => "destroy"}, {method: :delete,params: {id: @item.id}} %></p>
-<% else %>
-     <p><span>お気に入り登録: </span>
-     <%= button_to "いいねの数#{@item.favorites.count}", items_favorites_path,{params: {id: @item.id}} %>　</p>
+<%= render "favorite", item: @item %>
+<% if customer_signed_in? %>
+        <%= form_with model: @cart_item, url: customers_cart_items_path(current_customer.id), method: :post do |ci|  %>
+        <%= ci.select :amount,{"1つ"=>1,"2つ"=>2,"3つ"=>3},{selected: 1},{} %>
+        <%= ci.hidden_field :item_id, :value => @item.id  %>
+        <%= ci.hidden_field :customer_id, :value => current_customer.id  %>
+        <%= ci.submit %>
+    <% end %>　
+<% end%>
+<h2>この商品のレビューを作成</h2>
+<%= form_with model: Review.new, url: items_reviews_path, method: :post do |r| %>
+    <%= r.hidden_field :customer_id, :value => current_customer.id %>
+    <%= r.hidden_field :item_id, :value => @item.id %>
+    <%= r.label :rate %>
+    <br>
+    <%= r.select :rate,{1=>1,2=>2,3=>3,4=>4,5=>5} %>
+    <br>
+    <%= r.label :title %>
+    <br>
+    <%= r.text_field :title %>
+    <br>
+    <%= r.label :content %>
+    <br>
+    <%= r.text_area :content %>
+    <%= r.submit %>
+<% end %>
+<h2>カスタマーレビュー</h2>
+<%= "合計"+ @item.review_number(@item.id).to_s+"件のコメント" %>
+<%= "平均評価"+ @item.average_rate(@item.id).to_s %>
+<% Review.all.each do |r| %>
+<table>
+    <thead>
+        <tr>
+            <th>
+                rate
+            </th>
+            <th>
+                customer
+            </th>
+            <th>
+                title
+            </th>
+            <th>
+                content
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <%= r.rate.to_i %>
+            </td>
+            <td>
+                <%= r.customer.first_name.to_s %>
+            </td>
+            <td>
+                <%= r.title %>
+            </td>
+            <td>
+                <%= r.content %>
+            </td>
+        </tr>
+    </tbody>
+</table>
+    
 <% end %>
 
 
-<% if customer_signed_in? %>
-<%= form_with model: @cart_item, url: customers_cart_items_path(current_customer.id), method: :post do |ci|  %>
-<%= ci.select :amount,{"1つ"=>1,"2つ"=>2,"3つ"=>3},{selected: 1},{} %>
-<%= ci.hidden_field :item_id, :value => @item.id  %>
-<%= ci.hidden_field :customer_id, :value => current_customer.id  %>
-<%= ci.submit %>
-<% end %>　
-<% end%>
 
