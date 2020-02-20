@@ -13,7 +13,11 @@ class Item < ApplicationRecord
 
     def average_rate(item_id)
         reviews = Review.where(item_id: item_id).map{|review| review.rate }
-        average_rate_f = reviews.sum/reviews.length
+        if reviews.length != 0
+            average_rate_f = reviews.sum/reviews.length
+        else
+            average_rate_f = 0
+        end
         average_rate = average_rate_f.round(1)
     end
 

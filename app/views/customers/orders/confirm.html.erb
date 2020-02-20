@@ -1,0 +1,15 @@
+<%= render 'customers/header' %>
+<h2>your order</h2>
+    <h3>items</h3>
+        <%= render 'customers/cart_items/list', cart_items: @cart_items %>
+    
+    <h3>shipping address</h3>
+        <%=  %>
+
+    <h3>how to pay</h3>
+        <%=  %>
+
+    <%= form_with model:@new_order, url:customers_orders_path, method: :post do |f|%>
+    <%= f.hidden_field :customer_id, :value => current_customer.id %>
+    <%= f.submit %>
+    <%= end %>

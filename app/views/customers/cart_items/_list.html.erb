@@ -1,0 +1,59 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+            </th>
+            <th>
+                price(include tax)
+            </th>
+            <th>
+                amount
+            </th>
+            <th>
+                subtotal
+            </th>
+            <th>
+            </th>
+        </tr>
+    </thead>
+    
+    <tbody>
+    <% total = 0 %>
+    <% cart_items.each do |ci| %>
+        <tr>
+            <th>
+                <%= attachment_image_tag ci.item, :image, :fill, 60, 60, fallback: "no_img.jpg" %>
+                <%= ci.item.name %>
+            </th>
+            <th>
+                <%= (ci.item.price * 1.1).to_i %>yen
+            </th>
+            <th>
+                <%= ci.amount %>piece(s)
+            </th>
+            <th>
+                <% subtotal = (ci.item.price * 1.1 * ci.amount).to_i %>
+                <%= (ci.item.price * 1.1 * ci.amount).to_i %>yen
+                <% total = total + subtotal %>
+            </th>
+            <th>
+                <%= link_to "delete", customers_cart_item_path(ci.id), method: :delete %>
+            </th>
+        </tr>
+        <% end %>
+        <tr>
+            <th>
+            </th>
+            <th>
+            </th>
+            <th>
+            </th>
+            <th>
+                <p>total</p>
+                <%= total.to_s + "yen" %>
+            </th>
+            <th>
+            </th>
+        </tr>
+    </tbody>
+</table>
