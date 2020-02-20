@@ -1,0 +1,11 @@
+<div id="favorites_buttons_<%= item.id %>">
+<% if item.favorited_by?(current_customer) %>
+     <%= button_to "取り消し", {:controller => "items/favorites", :action => "destroy"}, {method: :delete,params: {id: item.id},remote: true} %>
+     <i class="fas fa-heart"></i>
+     <%= "いいね数"+ item.favorites.count.to_s%>
+<% else %>
+     <%= button_to "いいね", items_favorites_path,{params: {id: item.id},remote: true} %>　
+     <i class="far fa-heart"></i>
+     <%= "いいね数"+ item.favorites.count.to_s %>
+<% end %>
+</div>

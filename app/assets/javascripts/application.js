@@ -15,3 +15,54 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
+
+// $(document).ready(function () {
+//     $('.melon').on('click', function () {
+//         $(this).css('color', 'red');
+//     });
+// });
+
+// let peach = addString("webcamp");
+// alert(peach);
+
+// function addString(AAA) {
+//     let tomato = "hello" + AAA;
+//     return tomato;
+// }
+
+// let ringo = prompt("write down!");
+// alert(ringo);
+
+
+// $(function () {
+//     $(".melon").slideDown();
+//     $(".melon").css({
+//         'display': 'block',
+//         'background-color': '#0000FF',
+//         'height': '70px'
+//     });
+//     $(".melon").slideUp();
+// });
+
+// $(function () {
+//     $(".melon").slideDown(function () {
+//         $(".melon").css({
+//             'display': 'block',
+//             'background-color': '#0000FF',
+//             'height': '70px'
+//         }).slideUp();
+//     });
+// });
+
+$(function () {
+    $(".melon").mouseover(function () {
+        $('.melon').css({
+            'background-color': '#0000FF'
+        });
+    });
+    $(".melon").mouseout(function () {
+        $(".melon").css({
+            'background-color': '#FF0000'
+        });
+    });
+});

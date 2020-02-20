@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   end
   namespace :items,only: [:index, :show] do
     resource :favorites, only: [:create, :destroy]
+    resource :reviews, only: [:create, :destroy]
   end
   root "items#index"
   resources :items, only: [:show]

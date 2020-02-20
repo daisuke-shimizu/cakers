@@ -8,19 +8,14 @@ class Items::FavoritesController < ApplicationController
         @favorite.item_id = params[:id]
         @favorite.customer_id =  current_customer.id
         
-        if @favorite.save
-        redirect_to item_path(@item.id)
-
-        else 
-            render "items/show"
-        end
+        @favorite.save
     end
+
     def destroy
         @item =  Item.find(params[:id])
         
         @favorite = current_customer.favorites.find_by(item_id: @item.id)
         @favorite.destroy
-        redirect_to item_path(@item.id)
 
     end
 
